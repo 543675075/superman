@@ -10,7 +10,11 @@ Vue.use(VueRouter)
 
 
 const router = new VueRouter({
-  routers:[
+  routes:[
+    {
+      path: "",
+      redirect: "/home"
+    },
     {
       path:"/home",
       name:"home",
@@ -28,15 +32,14 @@ const router = new VueRouter({
     },
     {
       path:"/category",
-      name: "Profile",
+      name: "Category",
       component:Category
     }
   ],
   mode: "history",
 })
 router.beforeEach((to, from, next) => {
-  // document.title=to.
-  console.log(to)
+  document.title=to.matched[0].name
   next()
 })
 export default router
